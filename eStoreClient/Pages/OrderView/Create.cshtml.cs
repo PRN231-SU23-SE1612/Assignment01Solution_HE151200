@@ -13,9 +13,9 @@ namespace eStoreClient.Pages.OrderView
 {
     public class CreateModel : PageModel
     {
-        private readonly PRN231_AS1Context _context;
+        private readonly AppDbContext _context;
         public IOrderRepository repository = new OrderRepository();
-        public CreateModel(PRN231_AS1Context context)
+        public CreateModel(AppDbContext context)
         {
             _context = context;
         }

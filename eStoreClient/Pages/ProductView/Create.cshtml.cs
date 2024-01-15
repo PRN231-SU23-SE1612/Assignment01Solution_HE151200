@@ -17,9 +17,9 @@ namespace eStoreClient.Pages.ProductView
     {
         public IProductRepository repository = new ProductRepository();
 
-        private readonly PRN231_AS1Context _context;
+        private readonly AppDbContext _context;
 
-        public CreateModel(PRN231_AS1Context context)
+        public CreateModel(AppDbContext context)
         {
             _context = context;
         }

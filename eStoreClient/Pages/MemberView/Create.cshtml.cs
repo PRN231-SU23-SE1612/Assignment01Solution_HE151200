@@ -38,7 +38,6 @@ namespace eStoreClient.Pages.MemberView
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> OnPostAsync(IFormCollection collection)
         {
-
             if (!ModelState.IsValid || collection == null)
             {
                 return Page();

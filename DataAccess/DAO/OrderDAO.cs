@@ -17,7 +17,7 @@ namespace DataAccess.DAO
             try
             {
 
-                using (var context = new PRN231_AS1Context())
+                using (var context = new AppDbContext())
                 {
                     
                     listOrder = context.Orders.Include(s=>s.Member).ToList();
@@ -38,7 +38,7 @@ namespace DataAccess.DAO
             Order p = new Order();
             try
             {
-                using (var context = new PRN231_AS1Context())
+                using (var context = new AppDbContext())
                 {
                     p = context.Orders.Include(s => s.Member).SingleOrDefault(x => x.OrderId == OrderId);
                 }
@@ -54,7 +54,7 @@ namespace DataAccess.DAO
         {
             try
             {
-                using (var context = new PRN231_AS1Context())
+                using (var context = new AppDbContext())
                 {
                     context.Orders.Add(p);
                     context.SaveChanges();
@@ -72,7 +72,7 @@ namespace DataAccess.DAO
         {
             try
             {
-                using (var context = new PRN231_AS1Context())
+                using (var context = new AppDbContext())
                 {
                     context.Orders.Update(p);
                     // context.Entry<Products>(p).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
@@ -89,7 +89,7 @@ namespace DataAccess.DAO
         {
             try
             {
-                using (var context = new PRN231_AS1Context())
+                using (var context = new AppDbContext())
                 {
                     var p1 = context.Orders.SingleOrDefault(x => x.OrderId == p.OrderId);
                     context.Orders.Remove(p1);

@@ -16,9 +16,9 @@ namespace eStoreClient.Pages.OrderDetailsView
         public IOrderDetailRepository repository = new OrderDetailRepository();
 
 
-        private readonly PRN231_AS1Context _context;
+        private readonly AppDbContext _context;
 
-        public CreateModel(PRN231_AS1Context context)
+        public CreateModel(AppDbContext context)
         {
             _context = context;
         }

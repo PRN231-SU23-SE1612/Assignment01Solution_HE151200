@@ -40,7 +40,6 @@ namespace eStoreClient.Pages.OrderView
                 PropertyNameCaseInsensitive = true
             };
             Order = (IList<Order>)JsonSerializer.Deserialize<List<Order>>(strData, options);
-
         }
     }
 }

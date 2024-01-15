@@ -12,8 +12,8 @@ namespace DataAccess.DTO
        
         public int CategoryId { get; set; }
         public string? ProductName { get; set; }
-        public double Weight { get; set; }
-        public decimal UnitPrice { get; set; }
-        public int? UnitsInStock { get; set; }
+        public float Weight { get; set; }
+        public int UnitPrice { get; set; }
+        public int UnitInStock { get; set; }
     }
 }

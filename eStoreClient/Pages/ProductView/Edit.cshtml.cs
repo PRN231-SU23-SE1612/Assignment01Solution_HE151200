@@ -16,7 +16,7 @@ namespace eStoreClient.Pages.ProductView
 {
     public class EditModel : PageModel
     {
-        private readonly PRN231_AS1Context _context;
+        private readonly AppDbContext _context;
 
 
 
@@ -26,7 +26,7 @@ namespace eStoreClient.Pages.ProductView
         private readonly HttpClient client = null;
         private string ProductApiUlr = "";
 
-        public EditModel(PRN231_AS1Context context)
+        public EditModel(AppDbContext context)
         {
             _context = context;
             client = new HttpClient();

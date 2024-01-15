@@ -53,7 +53,7 @@ namespace eStoreAPI.Controllers
                ProductName=product.ProductName,
                Weight=product.Weight,
                UnitPrice=product.UnitPrice,
-               UnitsInStock=product.UnitsInStock
+               UnitInStock=product.UnitInStock
             };
             var pTmp = repository.GetProductById(id);
             if (pTmp == null)
@@ -77,7 +77,7 @@ namespace eStoreAPI.Controllers
                 ProductName = product.ProductName,
                 Weight = product.Weight,
                 UnitPrice = product.UnitPrice,
-                UnitsInStock = product.UnitsInStock
+                UnitInStock = product.UnitInStock
             };
           
            repository.SaveProduct(mem);

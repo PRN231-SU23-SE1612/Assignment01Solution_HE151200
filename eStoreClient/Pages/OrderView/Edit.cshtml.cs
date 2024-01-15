@@ -14,9 +14,9 @@ namespace eStoreClient.Pages.OrderView
 {
     public class EditModel : PageModel
     {
-        private readonly PRN231_AS1Context _context;
+        private readonly AppDbContext _context;
         public IOrderRepository repository = new OrderRepository();
-        public EditModel(PRN231_AS1Context context)
+        public EditModel(AppDbContext context)
         {
             _context = context;
         }

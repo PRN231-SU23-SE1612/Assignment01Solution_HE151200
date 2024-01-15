@@ -16,7 +16,7 @@ namespace DataAccess.DAO
             try
             {
 
-                using (var context = new PRN231_AS1Context())
+                using (var context = new AppDbContext())
                 {
                     Console.WriteLine("check");
                     listMember = context.Members.ToList();
@@ -41,7 +41,7 @@ namespace DataAccess.DAO
             Member p = new Member();
             try
             {
-                using (var context = new PRN231_AS1Context())
+                using (var context = new AppDbContext())
                 {
                     p = context.Members.SingleOrDefault(x => x.MemberId == MemberId);
                 }
@@ -57,7 +57,7 @@ namespace DataAccess.DAO
         {
             try
             {
-                using (var context = new PRN231_AS1Context())
+                using (var context = new AppDbContext())
                 {
                     context.Members.Add(p);
                     context.SaveChanges();
@@ -75,7 +75,7 @@ namespace DataAccess.DAO
         {
             try
             {
-                using (var context = new PRN231_AS1Context())
+                using (var context = new AppDbContext())
                 {
                     context.Members.Update(p);
                     // context.Entry<Products>(p).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
@@ -92,7 +92,7 @@ namespace DataAccess.DAO
         {
             try
             {
-                using (var context = new PRN231_AS1Context())
+                using (var context = new AppDbContext())
                 {
                     var p1 = context.Members.SingleOrDefault(x => x.MemberId == p.MemberId);
                     context.Members.Remove(p1);

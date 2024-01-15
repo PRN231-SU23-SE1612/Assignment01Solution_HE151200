@@ -16,11 +16,11 @@ namespace eStoreAPI.Controllers
     [ApiController]
     public class OrdersController : ControllerBase
     {
-        
+
         private IOrderRepository repository = new OrderRepository();
         public OrdersController()
         {
-            
+
         }
 
         // GET: api/Orders
@@ -32,8 +32,8 @@ namespace eStoreAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Order>> GetOrder(int id)
         {
-          
-            var order=repository.GetOrderById(id);
+
+            var order = repository.GetOrderById(id);
             if (order == null)
             {
                 return NotFound();
@@ -52,7 +52,7 @@ namespace eStoreAPI.Controllers
                 OrderId = id,
                 MemberId = o.MemberId,
                 OrderDate = o.OrderDate,
-                RequireDate = o.RequireDate,
+                RequiredDate = o.RequireDate,
                 ShippedDate = o.ShippedDate,
                 Freight = o.Freight
             };
@@ -67,24 +67,24 @@ namespace eStoreAPI.Controllers
             repository.UpdateOrder(pTmp);
             return NoContent();
         }
-        
+
         // POST: api/Orders
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Order>> PostOrder(OrderDTO o)
         {
             Order order = new Order
-          {
-            
-        MemberId=o.MemberId,
-         OrderDate=o.OrderDate,
-         RequireDate=o.RequireDate,
-        ShippedDate=o.ShippedDate,
-        Freight=o.Freight
+            {
+
+                MemberId = o.MemberId,
+                OrderDate = o.OrderDate,
+                RequiredDate = o.RequireDate,
+                ShippedDate = o.ShippedDate,
+                Freight = o.Freight
             };
 
-         
-           repository.SaveOrder(order);
+
+            repository.SaveOrder(order);
 
             return NoContent();
         }
@@ -93,18 +93,18 @@ namespace eStoreAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOrder(int id)
         {
-            
+
             var order = repository.GetOrderById(id);
             if (order == null)
             {
                 return NotFound();
             }
 
-           repository.DeleteOrder(order);
+            repository.DeleteOrder(order);
 
             return NoContent();
         }
 
-        
+
     }
 }

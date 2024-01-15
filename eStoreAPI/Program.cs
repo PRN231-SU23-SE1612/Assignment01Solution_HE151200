@@ -17,7 +17,7 @@ builder.Services.AddControllers().AddJsonOptions(x =>
 //    ReferenceHandler = ReferenceHandler.IgnoreCycles,
 //    WriteIndented = true
 //};
-builder.Services.AddDbContext<PRN231_AS1Context>(options =>
+builder.Services.AddDbContext<AppDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("MyConnection")));
 
 builder.Services.AddEndpointsApiExplorer();

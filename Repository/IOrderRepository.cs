@@ -14,5 +14,6 @@ namespace Repository
         void DeleteOrder(Order p);
         void UpdateOrder(Order p);
         List<Order> GetOrder();
+        List<OrderDetail> GetOrderDetails(int id);
     }
 }

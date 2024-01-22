@@ -21,6 +21,7 @@ namespace eStoreClient.Pages.OrderDetailsView
 
         private readonly HttpClient client = null;
         private string OrderDetailApiUlr = "";
+        private string OrderDetailsApiUlr = "https://localhost:7124/api/Orders/Details";
         public IndexModel()
         {
             client = new HttpClient();
@@ -30,17 +31,29 @@ namespace eStoreClient.Pages.OrderDetailsView
 
         }
 
-        public IList<OrderDetail> OrderDetail { get;set; } = default!;
+        public IList<OrderDetail> OrderDetails { get;set; } = default!;
 
-        public async Task OnGetAsync()
+        //public async Task OnGetAsync()
+        //{
+        //    HttpResponseMessage respone = await client.GetAsync(OrderDetailApiUlr);
+        //    string strData = await respone.Content.ReadAsStringAsync();
+        //    var options = new JsonSerializerOptions
+        //    {
+        //        PropertyNameCaseInsensitive = true
+        //    };
+        //    OrderDetails = (IList<OrderDetail>)JsonSerializer.Deserialize<List<OrderDetail>>(strData, options);
+        //}
+        public async Task OnGetAsync(int orderId)
         {
-            HttpResponseMessage respone = await client.GetAsync(OrderDetailApiUlr);
+            string partialUrl = $"{OrderDetailsApiUlr}/{orderId}";
+            HttpResponseMessage respone = await client.GetAsync($"{OrderDetailsApiUlr}/{orderId}");
             string strData = await respone.Content.ReadAsStringAsync();
             var options = new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
             };
-            OrderDetail = (IList<OrderDetail>)JsonSerializer.Deserialize<List<OrderDetail>>(strData, options);
+            OrderDetails = (IList<OrderDetail>)JsonSerializer.Deserialize<List<OrderDetail>>(strData, options);
         }
+
     }
 }

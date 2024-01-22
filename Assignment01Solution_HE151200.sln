@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eStoreAPI", "eStoreAPI\eSto
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eStoreClient", "eStoreClient\eStoreClient.csproj", "{E4423CD1-B4D0-47D5-85C6-8A3F96C417BA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{B98B85E9-9ED9-4C4E-AF80-6455E9CAC209}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository", "Repository\Repository.csproj", "{B98B85E9-9ED9-4C4E-AF80-6455E9CAC209}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

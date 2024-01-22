@@ -26,7 +26,7 @@ namespace eStoreAPI.Controllers
         // GET: api/OrderDetails
         [HttpGet]
         public async Task<ActionResult<IEnumerable<OrderDetail>>> GetOrderDetails()
-        => repository.GetOrderDetail();
+        => repository.GetOrderDetail();        
 
         // GET: api/OrderDetails/5
         [HttpGet("{id}")]

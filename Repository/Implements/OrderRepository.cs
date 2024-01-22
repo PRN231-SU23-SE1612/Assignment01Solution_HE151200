@@ -19,5 +19,7 @@ namespace Repository.Implements
         public void SaveOrder(Order c) => OrderDAO.SaveOrder(c);
 
         public void UpdateOrder(Order p) => OrderDAO.UpdateOrder(p);
+
+        public List<OrderDetail> GetOrderDetails(int id) => OrderDAO.GetOrderDetails(id);
     }
 }

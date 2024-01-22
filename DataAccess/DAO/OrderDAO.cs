@@ -102,5 +102,24 @@ namespace DataAccess.DAO
 
             }
         }
+
+        public static List<OrderDetail> GetOrderDetails(int id)
+        {
+            var listDetails = new List<OrderDetail>();
+            try
+            {
+
+                using (var context = new AppDbContext())
+                {
+                    listDetails = context.OrderDetails.Where(x => x.OrderId == id).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return listDetails;
+
+        }
     }
 }

@@ -40,7 +40,7 @@ namespace eStoreClient.Pages.ProductView
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryName");
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId");
             ProductApiUlr += "/" + id;
             HttpResponseMessage respone = await client.GetAsync(ProductApiUlr);
             string strData = await respone.Content.ReadAsStringAsync();

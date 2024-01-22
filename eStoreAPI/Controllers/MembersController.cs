@@ -10,6 +10,7 @@ using DataAccess.DTO;
 using Repository;
 using BusinessObject;
 using Repository.Implements;
+using System.Net.Mime;
 
 namespace eStoreAPI.Controllers
 {
@@ -19,13 +20,42 @@ namespace eStoreAPI.Controllers
     {
         
         private IMemberRepository repository = new MemberRepository();
-        public MembersController()
+        private readonly IConfiguration Configuration;
+
+        public class LoginInformation
         {
+            public string email { get; set; }
+            public string password { get; set; }
+        }
+        public MembersController(IConfiguration configuration)
+        {
+            Configuration=configuration;
             
         }
+        [HttpPost("authentication")]
+        [Consumes(MediaTypeNames.Application.Json)]
+        public async Task<ActionResult<Member>> Authentication(LoginInformation loginInformation)
+        {
+            Member member = await repository.Authentication(loginInformation.email, loginInformation.password);
+            if (member == null)
+            {
+                //if get member from database is null, check if it was the admin
+
+                if (loginInformation.email.Equals(Configuration["Admin:Email"], StringComparison.OrdinalIgnoreCase) && loginInformation.password.Equals(Configuration["Admin:Password"]))
+                {
+                    return new Member { Email = Configuration["Admin:Email"], Password = Configuration["Admin:Password"], isAdmin = true };
+                }
+
+                return NotFound();
+            }
+            return Ok(member);
+        }
+
 
         // GET: api/Members
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<Member>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IEnumerable<Member>>> GetMembers() 
             => repository.GetMember();
 

@@ -9,6 +9,36 @@ namespace DataAccess.DAO
 {
     public class MemberDAO
     {
+        private static MemberDAO instance = null;
+        private static readonly object instanceLock = new object();
+
+        private MemberDAO()
+        {
+        }
+
+        public static MemberDAO Instance
+        {
+            get
+            {
+                lock (instanceLock)
+                {
+                    if (instance == null)
+                    {
+                        instance = new MemberDAO();
+                    }
+
+                    return instance;
+                }
+            }
+        }
+        public async Task<Member> Authentication(string email, string password)
+        {
+            var context = new AppDbContext();
+            var list = context.Members.ToList();
+            return list.Where(member =>
+                    member.Email.Equals(email, StringComparison.OrdinalIgnoreCase) && member.Password.Equals(password))
+                .FirstOrDefault();
+        }
         public static List<Member> GetMember()
         {
             var listMember = new List<Member>();

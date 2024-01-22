@@ -9,6 +9,7 @@ namespace Repository
 {
     public interface IMemberRepository
     {
+        Task<Member> Authentication(string email, string password);
         void SaveMember(Member c);
         Member GetMemberById(int id);
         void DeleteMember(Member p);

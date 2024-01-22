@@ -10,6 +10,11 @@ namespace Repository.Implements
 {
     public class MemberRepository : IMemberRepository
     {
+        public Task<Member> Authentication(string email, string password)
+        {
+            return MemberDAO.Instance.Authentication(email, password);
+        }
+
         public void DeleteMember(Member p) => MemberDAO.DeleteMember(p);
 
         public List<Member> GetMember() => MemberDAO.GetMember();
